@@ -7,10 +7,8 @@ form {display: inline;}
   <% @contacts.each do |contact| %>
   <li>
     <%= contact.id %> -
-    <%= contact.first_name  %>
-    <%= contact.last_name  %>
     <%= contact.email  %>
-    <a href="contacts/show/<%= contact.id %>">Show</a>
+    <a href="/contacts/<%= contact.id %>">Show</a>
     <a href="contacts/<%= contact.id %>/edit">Edit</a>
     <%= erb :'contacts/_delete', layout: false, locals: { contact: contact } %>
   </li>

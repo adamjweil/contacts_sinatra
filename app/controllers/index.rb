@@ -21,9 +21,17 @@ post '/contacts' do
 end
 
 # show
-get '/contacts/show/:id' do
+get '/contacts/:id' do
   @contact = Contact.find(params[:id])
-  erb :'contacts/show'
+  if request.xhr?
+    if request.accept? 'application/json'
+      @contact.to_json
+    else
+      erb :'contacts/_contact', layout: false
+    end
+    else
+    erb :'contacts/show'
+  end
 end
 
 # edit
