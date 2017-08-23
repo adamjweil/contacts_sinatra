@@ -8,7 +8,6 @@ get '/contacts' do
   erb :'contacts/index'
 end
 
-
 # new
 get '/contacts/new' do
   erb :'contacts/new'
@@ -22,22 +21,34 @@ post '/contacts' do
 end
 
 # show
-get '/contacts/:id' do
+get '/contacts/show/:id' do
   @contact = Contact.find(params[:id])
   erb :'contacts/show'
 end
 
 # edit
-get '/contacts/:id/edit' do
+get '/contacts/edit/:id' do
   @contact = Contact.find(params[:id])
-  erb :'edit'
+  erb :'contacts/edit'
 end
 
+# update method
+def update_contact
+  @contact = Contact.find(params[:id])
+  @contact.update(params[:contact])
+  puts params
+  redirect "/contacts/show/#{@contact.id}"
+end
 # update
 patch '/contacts/:id' do
-
+  update_contact
+end
+put '/contacts/:id' do
+  update_contact
 end
 
-put '/contacts/:id' do
-
+# delete
+delete '/contacts/:id' do
+  Contact.find(params[:id]).destroy!
+  redirect '/contacts'
 end

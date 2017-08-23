@@ -1,3 +1,6 @@
+<style>
+form {display: inline;}
+</style>
 
 <h3>Contacts</h3>
 <ul>
@@ -7,9 +10,9 @@
     <%= contact.first_name  %>
     <%= contact.last_name  %>
     <%= contact.email  %>
-    <a href="/show/<%= contact.id %>">Show</a>
-    <a href="/edit/<%= contact.id %>">Edit</a>
-    <a href="/delete/<%= contact.id %>">Delete</a>
+    <a href="contacts/show/<%= contact.id %>">Show</a>
+    <a href="contacts/<%= contact.id %>/edit">Edit</a>
+    <%= erb :'contacts/_delete', layout: false, locals: { contact: contact } %>
   </li>
     <% end %>
 </ul>
