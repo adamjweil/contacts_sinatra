@@ -1,0 +1,21 @@
+<style> form div { padding:10px; }</style>
+
+<form action="/contacts" method="post">
+  <div>
+    <label for="contact_first_name">First Name:</label>
+    <input id="contact_first_name" type="text" name="contact[first_name]"/><br>
+  </div>
+  <div>
+    <label for="contact_last_name">Last Name:</label>
+    <input id="contact_last_name" type="text" name="contact[last_name]"/><br>
+  </div>
+  <div>
+    <label for="contact_email">Email:</label>
+    <input id="contact_email" type="email" name="contact[email]"/><br>
+  </div>
+  <div>
+    <input type="submit" value="Create Contact"/>
+  </div>
+</form>
+
+<a href="/">Home</a>
